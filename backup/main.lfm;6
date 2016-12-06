@@ -1,0 +1,2383 @@
+object frmMain: TfrmMain
+  Left = 349
+  Height = 729
+  Top = 274
+  Width = 1035
+  Caption = 'HMRC DataExchange'
+  ClientHeight = 729
+  ClientWidth = 1035
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  ShowHint = True
+  LCLVersion = '1.2.6.0'
+  object PageControl1: TPageControl
+    Left = 0
+    Height = 632
+    Top = 74
+    Width = 1035
+    ActivePage = TbImport
+    Align = alClient
+    TabIndex = 1
+    TabOrder = 0
+    OnChange = PageControl1Change
+    object tbSelect: TTabSheet
+      Caption = 'Select Project'
+      ClientHeight = 604
+      ClientWidth = 1027
+      object pnl_accountLeft1: TPanel
+        Left = 0
+        Height = 604
+        Top = 0
+        Width = 392
+        Align = alLeft
+        ClientHeight = 604
+        ClientWidth = 392
+        TabOrder = 0
+        object TreeView_AcctOrg: TTreeView
+          Left = 1
+          Height = 571
+          Top = 32
+          Width = 390
+          Align = alClient
+          DefaultItemHeight = 18
+          Images = ImageList1
+          Indent = 30
+          ReadOnly = True
+          TabOrder = 0
+          OnChange = TreeView_AcctOrgChange
+          OnCreateNodeClass = TreeView_AcctOrgCreateNodeClass
+          OnDeletion = TreeView_AcctOrgDeletion
+          Options = [tvoAutoItemHeight, tvoHideSelection, tvoKeepCollapsedNodes, tvoReadOnly, tvoShowButtons, tvoShowLines, tvoShowRoot, tvoToolTips, tvoThemedDraw]
+        end
+        object pnl_SearchAcctName2: TPanel
+          Left = 1
+          Height = 31
+          Top = 1
+          Width = 390
+          Align = alTop
+          ClientHeight = 31
+          ClientWidth = 390
+          TabOrder = 1
+          object edt_locate2: TEdit
+            Left = 104
+            Height = 29
+            Hint = 'Enter Accountname'
+            Top = 1
+            Width = 285
+            Align = alClient
+            Anchors = [akTop, akLeft, akBottom]
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 0
+          end
+          object Button7: TButton
+            Left = 1
+            Height = 29
+            Top = 1
+            Width = 103
+            Align = alLeft
+            Anchors = [akTop, akLeft, akRight]
+            Caption = 'Load data'
+            OnClick = Button7Click
+            OnContextPopup = Button7ContextPopup
+            TabOrder = 1
+          end
+        end
+      end
+      object Panel2: TPanel
+        Left = 392
+        Height = 604
+        Top = 0
+        Width = 635
+        Align = alClient
+        ClientHeight = 604
+        ClientWidth = 635
+        TabOrder = 1
+        object pnl_accountGrids: TPanel
+          Left = 1
+          Height = 602
+          Top = 1
+          Width = 633
+          Align = alClient
+          ClientHeight = 602
+          ClientWidth = 633
+          TabOrder = 0
+          Visible = False
+          object pnl_SearchAcctName3: TPanel
+            Left = 1
+            Height = 31
+            Top = 1
+            Width = 631
+            Align = alTop
+            ClientHeight = 31
+            ClientWidth = 631
+            TabOrder = 0
+            object edt_locate3: TEdit
+              Left = 1
+              Height = 29
+              Hint = 'Enter Accountname'
+              Top = 1
+              Width = 629
+              Align = alClient
+              Anchors = [akTop, akLeft, akBottom]
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 0
+            end
+          end
+          object gridAccount: TDBGrid
+            Left = 1
+            Height = 135
+            Top = 32
+            Width = 631
+            Align = alTop
+            Color = clWindow
+            Columns = <>
+            DataSource = DM_Main.dsAccount
+            TabOrder = 1
+          end
+          object gridProject: TDBGrid
+            Left = 1
+            Height = 149
+            Top = 323
+            Width = 631
+            Align = alTop
+            Color = clWindow
+            Columns = <>
+            DataSource = DM_Main.dsProject
+            TabOrder = 2
+          end
+          object gridOrganization: TDBGrid
+            Left = 1
+            Height = 156
+            Top = 167
+            Width = 631
+            Align = alTop
+            Color = clWindow
+            Columns = <>
+            DataSource = DM_Main.dsOrganization
+            TabOrder = 3
+          end
+          object gridProjectConfig: TDBGrid
+            Left = 1
+            Height = 135
+            Top = 466
+            Width = 631
+            Align = alBottom
+            Color = clWindow
+            Columns = <>
+            DataSource = DM_Main.dsProjectConfig_Org
+            TabOrder = 4
+          end
+        end
+      end
+    end
+    object TbImport: TTabSheet
+      Caption = 'Import'
+      ClientHeight = 604
+      ClientWidth = 1027
+      object sWorksheetGrid1: TsWorksheetGrid
+        Left = 0
+        Height = 532
+        Top = 72
+        Width = 488
+        FrozenCols = 0
+        FrozenRows = 0
+        ReadFormulas = False
+        WorkbookSource = sWorkbookSource1
+        Align = alLeft
+        AutoAdvance = aaDown
+        ColCount = 27
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Verdana'
+        ParentFont = False
+        RowCount = 101
+        TabOrder = 0
+        TitleFont.Color = clBlack
+        TitleFont.Height = -13
+        TitleFont.Name = 'Verdana'
+        OnClick = sWorksheetGrid1Click
+        ColWidths = (
+          58
+          64
+          64
+          64
+          64
+          64
+          64
+          64
+          64
+          64
+          64
+          64
+          64
+          64
+          64
+          64
+          64
+          64
+          64
+          64
+          64
+          64
+          64
+          64
+          64
+          64
+          64
+        )
+      end
+      object vleTableNames: TValueListEditor
+        Left = 520
+        Height = 112
+        Top = 336
+        Width = 224
+        DefaultColWidth = 90
+        FixedCols = 0
+        RowCount = 2
+        TabOrder = 1
+        Strings.Strings = (
+          ''
+        )
+        ColWidths = (
+          90
+          130
+        )
+      end
+      object sgMapping: TStringGrid
+        Left = 520
+        Height = 224
+        Top = 72
+        Width = 464
+        ColCount = 10
+        Columns = <        
+          item
+            Title.Caption = 'ColName'
+            Width = 100
+          end        
+          item
+            Title.Caption = 'Fieldname'
+            Width = 100
+          end        
+          item
+            Title.Caption = 'DataFile'
+            Width = 100
+          end        
+          item
+            ButtonStyle = cbsCheckboxColumn
+            Title.Caption = 'IsUserID'
+          end        
+          item
+            ButtonStyle = cbsCheckboxColumn
+            Title.Caption = 'IsMapValue'
+          end        
+          item
+            ButtonStyle = cbsCheckboxColumn
+            Title.Caption = 'isRelationship'
+          end        
+          item
+            ButtonStyle = cbsCheckboxColumn
+            Title.Caption = 'Validate'
+          end        
+          item
+            Title.Caption = 'ID'
+          end        
+          item
+            Title.Caption = 'DateFormat'
+          end>
+        Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goSmoothScroll]
+        TabOrder = 2
+      end
+      object vleUserID: TValueListEditor
+        Left = 760
+        Height = 112
+        Top = 336
+        Width = 224
+        DefaultColWidth = 100
+        FixedCols = 0
+        RowCount = 2
+        TabOrder = 3
+        Strings.Strings = (
+          ''
+        )
+        TitleCaptions.Strings = (
+          'UserID'
+          'Column'
+        )
+        ColWidths = (
+          100
+          120
+        )
+      end
+      object Label1: TLabel
+        Left = 880
+        Height = 15
+        Top = 312
+        Width = 69
+        Caption = 'UserID Key(s)'
+        ParentColor = False
+      end
+      object memoSQL: TMemo
+        Left = 528
+        Height = 120
+        Top = 456
+        Width = 472
+        Lines.Strings = (
+          'memoSQL'
+        )
+        ScrollBars = ssAutoBoth
+        TabOrder = 4
+      end
+      object Label2: TLabel
+        Left = 568
+        Height = 15
+        Top = 312
+        Width = 88
+        Caption = 'Tables to update'
+        ParentColor = False
+      end
+      object pnlImportControls: TPanel
+        Left = 0
+        Height = 72
+        Top = 0
+        Width = 1027
+        Align = alTop
+        ClientHeight = 72
+        ClientWidth = 1027
+        Enabled = False
+        TabOrder = 5
+        object btnOpenFile: TBitBtn
+          Left = 168
+          Height = 30
+          Top = 8
+          Width = 136
+          Caption = 'Open File'
+          Enabled = False
+          Glyph.Data = {
+            76010000424D7601000000000000760000002800000020000000100000000100
+            04000000000000010000130B0000130B00000000000000000000000000000000
+            800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+            FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333
+            33333333333FFFFFFFFF333333000000000033333377777777773333330FFFFF
+            FFF03333337F333333373333330FFFFFFFF03333337F3FF3FFF73333330F00F0
+            00F03333F37F773777373330330FFFFFFFF03337FF7F3F3FF3F73339030F0800
+            F0F033377F7F737737373339900FFFFFFFF03FF7777F3FF3FFF70999990F00F0
+            00007777777F7737777709999990FFF0FF0377777777FF37F3730999999908F0
+            F033777777777337F73309999990FFF0033377777777FFF77333099999000000
+            3333777777777777333333399033333333333337773333333333333903333333
+            3333333773333333333333303333333333333337333333333333
+          }
+          NumGlyphs = 2
+          OnClick = btnOpenFileClick
+          TabOrder = 0
+        end
+        object btnProcessFile: TBitBtn
+          Left = 312
+          Height = 30
+          Top = 8
+          Width = 136
+          Caption = 'Process File'
+          Enabled = False
+          Glyph.Data = {
+            76010000424D7801000000000000760000002800000020000000100000000100
+            04000000000000000000120B0000120B00000000000000000000000000000000
+            800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+            FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00555555555555
+            555555FFFFFFFFFF5F5557777777777505555777777777757F55555555555555
+            055555555555FF5575F555555550055030555555555775F7F7F55555550FB000
+            005555555575577777F5555550FB0BF0F05555555755755757F555550FBFBF0F
+            B05555557F55557557F555550BFBF0FB005555557F55575577F555500FBFBFB0
+            305555577F555557F7F5550E0BFBFB003055557575F55577F7F550EEE0BFB0B0
+            305557FF575F5757F7F5000EEE0BFBF03055777FF575FFF7F7F50000EEE00000
+            30557777FF577777F7F500000E05555BB05577777F75555777F5500000555550
+            3055577777555557F7F555000555555999555577755555577755
+          }
+          NumGlyphs = 2
+          OnClick = btnProcessFileClick
+          TabOrder = 1
+        end
+        object lblAcctID1: TLabel
+          Left = 160
+          Height = 15
+          Top = 48
+          Width = 79
+          Caption = 'Process Count:'
+          ParentColor = False
+        end
+        object spnProcessCount: TSpinEdit
+          Left = 248
+          Height = 23
+          Top = 40
+          Width = 50
+          MaxValue = 1000
+          TabOrder = 2
+          Value = 4
+        end
+        object lblAcctID2: TLabel
+          Left = 312
+          Height = 15
+          Top = 48
+          Width = 40
+          Caption = '0 = ALL'
+          ParentColor = False
+        end
+        object BitBtn2: TBitBtn
+          Left = 888
+          Height = 30
+          Top = 8
+          Width = 75
+          Caption = 'Test'
+          OnClick = BitBtn2Click
+          TabOrder = 3
+        end
+        object edtHeaderCount: TEdit
+          Left = 792
+          Height = 23
+          Top = 16
+          Width = 80
+          TabOrder = 4
+        end
+        object DBLookup_FileImportTypeGlobal: TDBLookupComboBox
+          Left = 16
+          Height = 23
+          Top = 8
+          Width = 136
+          KeyField = 'FileImportType_ID'
+          ListField = 'Description'
+          ListFieldIndex = 1
+          ListSource = DM_Main.dsluFileImportTypeGlobal
+          LookupCache = False
+          OnCloseUp = DBLookup_FileImportTypeGlobalCloseUp
+          OnSelect = DBLookup_FileImportTypeGlobalSelect
+          TabOrder = 5
+        end
+        object lblAcctID3: TLabel
+          Left = 40
+          Height = 15
+          Top = 32
+          Width = 87
+          Caption = 'Select File Type'
+          Font.Color = clBlue
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+      end
+    end
+    object tbMapping: TTabSheet
+      Caption = 'tbMapping'
+      ClientHeight = 604
+      ClientWidth = 1027
+      OnContextPopup = tbMappingContextPopup
+      object pnlRightMap: TPanel
+        Left = 402
+        Height = 604
+        Top = 0
+        Width = 625
+        Align = alRight
+        ClientHeight = 604
+        ClientWidth = 625
+        Color = clGradientActiveCaption
+        ParentColor = False
+        TabOrder = 0
+        OnClick = pnlRightMapClick
+        object DBEdit1: TDBEdit
+          Left = 40
+          Height = 23
+          Top = 88
+          Width = 152
+          DataField = 'COLUMNNAME'
+          DataSource = DM_Main.ds_core_OrgMapItem
+          CharCase = ecNormal
+          MaxLength = 0
+          TabOrder = 0
+        end
+        object DBEdit2: TDBEdit
+          Left = 304
+          Height = 23
+          Top = 136
+          Width = 139
+          DataField = 'FIELDNAME'
+          DataSource = DM_Main.ds_core_OrgMapItem
+          CharCase = ecNormal
+          MaxLength = 0
+          TabOrder = 1
+        end
+        object DBEdit4: TDBEdit
+          Left = 128
+          Height = 23
+          Hint = 'ex: MM/DD/YYYY'
+          Top = 176
+          Width = 105
+          DataField = 'DATEFORMAT'
+          DataSource = DM_Main.ds_core_OrgMapItem
+          CharCase = ecNormal
+          MaxLength = 0
+          TabOrder = 2
+        end
+        object DBCheckBox1: TDBCheckBox
+          Left = 64
+          Height = 23
+          Top = 262
+          Width = 90
+          Caption = 'Map Value'
+          DataField = 'MAPVALUE_FLG'
+          DataSource = DM_Main.ds_core_OrgMapItem
+          OnChange = DBCheckBox1Change
+          TabOrder = 3
+          ValueChecked = '1'
+          ValueUnchecked = '0'
+        end
+        object DBCheckBox2: TDBCheckBox
+          Left = 232
+          Height = 23
+          Top = 214
+          Width = 90
+          Caption = 'Relationship'
+          DataField = 'RELATIONSHIP_FLG'
+          DataSource = DM_Main.ds_core_OrgMapItem
+          TabOrder = 4
+          ValueChecked = '1'
+          ValueUnchecked = '0'
+        end
+        object DBCheckBox3: TDBCheckBox
+          Left = 64
+          Height = 23
+          Top = 214
+          Width = 50
+          Caption = 'ID'
+          DataField = 'USERID_FLG'
+          DataSource = DM_Main.ds_core_OrgMapItem
+          TabOrder = 5
+          ValueChecked = '1'
+          ValueUnchecked = '0'
+        end
+        object DBCheckBox4: TDBCheckBox
+          Left = 144
+          Height = 23
+          Top = 214
+          Width = 66
+          Caption = 'User Reg.'
+          DataField = 'USERREGISTRATION_FLG'
+          DataSource = DM_Main.ds_core_OrgMapItem
+          TabOrder = 6
+          ValueChecked = '1'
+          ValueUnchecked = '0'
+        end
+        object DBCheckBox5: TDBCheckBox
+          Left = 160
+          Height = 23
+          Top = 262
+          Width = 122
+          Caption = 'Validate w Values'
+          DataField = 'VALIDATEWVALUE_FLG'
+          DataSource = DM_Main.ds_core_OrgMapItem
+          TabOrder = 7
+          ValueChecked = '1'
+          ValueUnchecked = '0'
+        end
+        object Label3: TLabel
+          Left = 43
+          Height = 15
+          Top = 72
+          Width = 149
+          Caption = 'Column Name (from Client)'
+          ParentColor = False
+        end
+        object Label4: TLabel
+          Left = 336
+          Height = 15
+          Top = 120
+          Width = 57
+          Caption = 'FieldName'
+          ParentColor = False
+        end
+        object Label5: TLabel
+          Left = 164
+          Height = 15
+          Top = 120
+          Width = 61
+          Caption = 'TableName'
+          ParentColor = False
+        end
+        object ShapeMap: TShape
+          Left = 96
+          Height = 18
+          Top = 286
+          Width = 24
+          Brush.Color = 8388672
+          Shape = stTriangle
+        end
+        object Label6: TLabel
+          Left = 55
+          Height = 15
+          Top = 184
+          Width = 65
+          Caption = 'Date Format'
+          ParentColor = False
+        end
+        object ShapeValidate: TShape
+          Left = 201
+          Height = 18
+          Top = 286
+          Width = 24
+          Brush.Color = clOlive
+          Shape = stTriangle
+        end
+        object ShapeID: TShape
+          Left = 88
+          Height = 18
+          Top = 238
+          Width = 24
+          Brush.Color = clYellow
+          Shape = stTriangle
+        end
+        object ShapeReg: TShape
+          Left = 168
+          Height = 18
+          Top = 238
+          Width = 24
+          Brush.Color = clBackground
+          Shape = stTriangle
+        end
+        object ShapeRel: TShape
+          Left = 264
+          Height = 18
+          Top = 238
+          Width = 24
+          Brush.Color = clGreen
+          Shape = stTriangle
+        end
+        object DBNavigator1: TDBNavigator
+          Left = 1
+          Height = 25
+          Top = 336
+          Width = 623
+          Align = alBottom
+          BevelOuter = bvNone
+          ChildSizing.EnlargeHorizontal = crsScaleChilds
+          ChildSizing.EnlargeVertical = crsScaleChilds
+          ChildSizing.ShrinkHorizontal = crsScaleChilds
+          ChildSizing.ShrinkVertical = crsScaleChilds
+          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+          ChildSizing.ControlsPerLine = 100
+          ClientHeight = 25
+          ClientWidth = 623
+          DataSource = DM_Main.ds_core_OrgMapItem
+          Options = []
+          TabOrder = 8
+        end
+        object Label8: TLabel
+          Left = 1
+          Height = 31
+          Top = 1
+          Width = 623
+          Align = alTop
+          AutoSize = False
+          Caption = 'Column to Field Mapping'
+          Font.Color = clHighlight
+          Font.Height = -21
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+          OnClick = Label8Click
+        end
+        object Panel1: TPanel
+          Left = 1
+          Height = 242
+          Top = 361
+          Width = 623
+          Align = alBottom
+          Caption = 'Panel1'
+          ClientHeight = 242
+          ClientWidth = 623
+          TabOrder = 9
+          object DBNavigator2: TDBNavigator
+            Left = 1
+            Height = 25
+            Top = 216
+            Width = 621
+            Align = alBottom
+            BevelOuter = bvNone
+            ChildSizing.EnlargeHorizontal = crsScaleChilds
+            ChildSizing.EnlargeVertical = crsScaleChilds
+            ChildSizing.ShrinkHorizontal = crsScaleChilds
+            ChildSizing.ShrinkVertical = crsScaleChilds
+            ChildSizing.Layout = cclLeftToRightThenTopToBottom
+            ChildSizing.ControlsPerLine = 100
+            ClientHeight = 25
+            ClientWidth = 621
+            DataSource = DM_Main.ds_core_OrgMapItemValue
+            Options = []
+            TabOrder = 0
+          end
+          object DBGrid2: TDBGrid
+            Left = 1
+            Height = 185
+            Top = 31
+            Width = 621
+            Align = alClient
+            Color = clWindow
+            Columns = <            
+              item
+                Title.Caption = 'Value (string)'
+                Width = 120
+                FieldName = 'SVALUE'
+              end            
+              item
+                Title.Caption = 'Value MapTo'
+                Width = 120
+                FieldName = 'VALUEMAPTO'
+              end            
+              item
+                Title.Caption = 'Order'
+                FieldName = 'DISPLAYORDER'
+              end            
+              item
+                ButtonStyle = cbsCheckboxColumn
+                Title.Caption = 'IntegerVal'
+                FieldName = 'INTEGERVAL_FLG'
+              end            
+              item
+                Title.Caption = 'LINK_ID'
+                Width = 140
+                FieldName = 'ORGMAPITEMVALUELINK_ID'
+              end>
+            DataSource = DM_Main.ds_core_OrgMapItemValue
+            Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgDisableDelete]
+            TabOrder = 1
+          end
+          object Label7: TLabel
+            Left = 1
+            Height = 30
+            Top = 1
+            Width = 621
+            Align = alTop
+            Caption = 'Value or Validation Mapping'
+            Font.Color = clHighlight
+            Font.Height = -21
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+        end
+        object DBLookup_ItemType: TDBLookupComboBox
+          Left = 216
+          Height = 23
+          Top = 88
+          Width = 152
+          DataField = 'ITEMTYPE_ID'
+          DataSource = DM_Main.ds_core_OrgMapItem
+          KeyField = 'ITEMTYPE_ID'
+          ListField = 'DESCRIPTION'
+          ListFieldIndex = 0
+          ListSource = DM_Main.dsluItemType
+          LookupCache = False
+          OnClick = DBLookup_ItemTypeClick
+          ReadOnly = True
+          TabOrder = 10
+        end
+        object Label9: TLabel
+          Left = 251
+          Height = 15
+          Top = 72
+          Width = 53
+          Caption = 'Item Type'
+          ParentColor = False
+        end
+        object DBLookup_FileImportType: TDBLookupComboBox
+          Left = 152
+          Height = 23
+          Top = 32
+          Width = 152
+          DataField = 'FILEIMPORTTYPE_ID'
+          DataSource = DM_Main.ds_core_OrgMapItem
+          KeyField = 'FileImportType_ID'
+          ListField = 'DESCRIPTION'
+          ListFieldIndex = 0
+          ListSource = DM_Main.dsluFileImportType
+          LookupCache = False
+          ReadOnly = True
+          TabOrder = 11
+        end
+        object Label10: TLabel
+          Left = 48
+          Height = 15
+          Top = 40
+          Width = 90
+          Caption = 'File Import TYPE:'
+          ParentColor = False
+        end
+        object DBLookup_TableName: TDBLookupComboBox
+          Left = 128
+          Height = 23
+          Top = 136
+          Width = 152
+          DataField = 'TABLENAME'
+          DataSource = DM_Main.ds_core_OrgMapItem
+          KeyField = 'Table_NM'
+          ListField = 'TABLE_NM'
+          ListFieldIndex = 0
+          ListSource = DM_Main.dsluTableName_Dict
+          LookupCache = False
+          OnClick = DBLookup_TableNameClick
+          ReadOnly = True
+          TabOrder = 12
+        end
+        object Label11: TLabel
+          Left = 48
+          Height = 15
+          Top = 136
+          Width = 48
+          Caption = 'MAP TO:'
+          ParentColor = False
+        end
+        object DBEdit6: TDBEdit
+          Left = 384
+          Height = 23
+          Hint = 'ex: MM/DD/YYYY'
+          Top = 88
+          Width = 225
+          DataField = 'DESCRIPTION'
+          DataSource = DM_Main.ds_core_OrgMapItem
+          CharCase = ecNormal
+          MaxLength = 0
+          TabOrder = 13
+        end
+        object Label12: TLabel
+          Left = 448
+          Height = 15
+          Top = 72
+          Width = 60
+          Caption = 'Description'
+          ParentColor = False
+        end
+      end
+      object pnlLeftMapping: TPanel
+        Left = 0
+        Height = 604
+        Top = 0
+        Width = 402
+        Align = alClient
+        ClientHeight = 604
+        ClientWidth = 402
+        Color = clInactiveCaption
+        ParentColor = False
+        TabOrder = 1
+        object DBGrid_OrgMapItem: TDBGrid
+          Left = 1
+          Height = 507
+          Top = 96
+          Width = 400
+          Align = alClient
+          Color = clWindow
+          Columns = <          
+            item
+              Title.Caption = 'COLUMNNAME'
+              Width = 120
+              FieldName = 'COLUMNNAME'
+            end          
+            item
+              Title.Caption = 'TABLENAME'
+              Width = 120
+              FieldName = 'TABLENAME'
+            end          
+            item
+              Title.Caption = 'FIELDNAME'
+              Width = 120
+              FieldName = 'FIELDNAME'
+            end          
+            item
+              ButtonStyle = cbsCheckboxColumn
+              Title.Caption = 'USERID_FLG'
+              FieldName = 'USERID_FLG'
+            end          
+            item
+              ButtonStyle = cbsCheckboxColumn
+              Title.Caption = 'USERREGISTRATION_FLG'
+              FieldName = 'USERREGISTRATION_FLG'
+            end          
+            item
+              ButtonStyle = cbsCheckboxColumn
+              Title.Caption = 'REL_FLG'
+              FieldName = 'RELATIONSHIP_FLG'
+            end          
+            item
+              ButtonStyle = cbsCheckboxColumn
+              Title.Caption = 'MAPVALUE_FLG'
+              FieldName = 'MAPVALUE_FLG'
+            end          
+            item
+              ButtonStyle = cbsEllipsis
+              Title.Caption = 'VALIDATEWVALUE_FLG'
+              FieldName = 'VALIDATEWVALUE_FLG'
+            end          
+            item
+              Title.Caption = 'FILEIMPORTTYPE_ID'
+              FieldName = 'FILEIMPORTTYPE_ID'
+            end          
+            item
+              Title.Caption = 'ORGMAPITEM_ID'
+              FieldName = 'ORGMAPITEM_ID'
+            end          
+            item
+              Title.Caption = 'DATEFORMAT'
+              FieldName = 'DATEFORMAT'
+            end          
+            item
+              Title.Caption = 'ITEMTYPE_ID'
+              FieldName = 'ITEMTYPE_ID'
+            end>
+          DataSource = DM_Main.ds_core_OrgMapItem
+          Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgDisableDelete, dgDisableInsert]
+          ReadOnly = True
+          TabOrder = 0
+        end
+        object pnlOrgMappingControls: TPanel
+          Left = 1
+          Height = 95
+          Top = 1
+          Width = 400
+          Align = alTop
+          ClientHeight = 95
+          ClientWidth = 400
+          Enabled = False
+          TabOrder = 1
+          object btnOpenOrgMapping: TBitBtn
+            Left = 1
+            Height = 93
+            Top = 1
+            Width = 120
+            Align = alLeft
+            Caption = 'Open OrgMapping'
+            OnClick = btnOpenOrgMappingClick
+            TabOrder = 0
+          end
+          object DBEdit7: TDBEdit
+            Left = 128
+            Height = 30
+            Top = 0
+            Width = 274
+            DataField = 'ORGNAME'
+            DataSource = DM_Main.dsOrganization
+            ReadOnly = True
+            Anchors = [akTop, akRight]
+            AutoSize = False
+            CharCase = ecNormal
+            Color = clMoneyGreen
+            MaxLength = 0
+            TabOrder = 1
+          end
+          object DBLookup_FileImportTypeGlobal1: TDBLookupComboBox
+            Left = 240
+            Height = 23
+            Top = 40
+            Width = 136
+            KeyField = 'FileImportType_ID'
+            ListField = 'Description'
+            ListFieldIndex = 1
+            ListSource = DM_Main.dsluFileImportTypeGlobal
+            LookupCache = False
+            OnCloseUp = DBLookup_FileImportTypeGlobal1CloseUp
+            OnSelect = DBLookup_FileImportTypeGlobalSelect
+            TabOrder = 2
+          end
+          object Label13: TLabel
+            Left = 136
+            Height = 15
+            Top = 40
+            Width = 90
+            Caption = 'File Import TYPE:'
+            ParentColor = False
+          end
+          object chk_ViewAllMapping: TCheckBox
+            Left = 144
+            Height = 19
+            Top = 64
+            Width = 68
+            Caption = 'View ALL'
+            Checked = True
+            OnChange = chk_ViewAllMappingChange
+            State = cbChecked
+            TabOrder = 3
+          end
+        end
+      end
+    end
+    object tbLog: TTabSheet
+      Caption = 'tbLog'
+      ClientHeight = 604
+      ClientWidth = 1027
+      inline memoLog: TSynMemo
+        Cursor = crIBeam
+        Left = 0
+        Height = 604
+        Top = 0
+        Width = 592
+        Align = alLeft
+        Font.Height = -13
+        Font.Name = 'Courier New'
+        Font.Pitch = fpFixed
+        Font.Quality = fqNonAntialiased
+        ParentColor = False
+        ParentFont = False
+        TabOrder = 0
+        Gutter.Width = 57
+        Gutter.MouseActions = <>
+        Keystrokes = <        
+          item
+            Command = ecUp
+            ShortCut = 38
+          end        
+          item
+            Command = ecSelUp
+            ShortCut = 8230
+          end        
+          item
+            Command = ecScrollUp
+            ShortCut = 16422
+          end        
+          item
+            Command = ecDown
+            ShortCut = 40
+          end        
+          item
+            Command = ecSelDown
+            ShortCut = 8232
+          end        
+          item
+            Command = ecScrollDown
+            ShortCut = 16424
+          end        
+          item
+            Command = ecLeft
+            ShortCut = 37
+          end        
+          item
+            Command = ecSelLeft
+            ShortCut = 8229
+          end        
+          item
+            Command = ecWordLeft
+            ShortCut = 16421
+          end        
+          item
+            Command = ecSelWordLeft
+            ShortCut = 24613
+          end        
+          item
+            Command = ecRight
+            ShortCut = 39
+          end        
+          item
+            Command = ecSelRight
+            ShortCut = 8231
+          end        
+          item
+            Command = ecWordRight
+            ShortCut = 16423
+          end        
+          item
+            Command = ecSelWordRight
+            ShortCut = 24615
+          end        
+          item
+            Command = ecPageDown
+            ShortCut = 34
+          end        
+          item
+            Command = ecSelPageDown
+            ShortCut = 8226
+          end        
+          item
+            Command = ecPageBottom
+            ShortCut = 16418
+          end        
+          item
+            Command = ecSelPageBottom
+            ShortCut = 24610
+          end        
+          item
+            Command = ecPageUp
+            ShortCut = 33
+          end        
+          item
+            Command = ecSelPageUp
+            ShortCut = 8225
+          end        
+          item
+            Command = ecPageTop
+            ShortCut = 16417
+          end        
+          item
+            Command = ecSelPageTop
+            ShortCut = 24609
+          end        
+          item
+            Command = ecLineStart
+            ShortCut = 36
+          end        
+          item
+            Command = ecSelLineStart
+            ShortCut = 8228
+          end        
+          item
+            Command = ecEditorTop
+            ShortCut = 16420
+          end        
+          item
+            Command = ecSelEditorTop
+            ShortCut = 24612
+          end        
+          item
+            Command = ecLineEnd
+            ShortCut = 35
+          end        
+          item
+            Command = ecSelLineEnd
+            ShortCut = 8227
+          end        
+          item
+            Command = ecEditorBottom
+            ShortCut = 16419
+          end        
+          item
+            Command = ecSelEditorBottom
+            ShortCut = 24611
+          end        
+          item
+            Command = ecToggleMode
+            ShortCut = 45
+          end        
+          item
+            Command = ecCopy
+            ShortCut = 16429
+          end        
+          item
+            Command = ecPaste
+            ShortCut = 8237
+          end        
+          item
+            Command = ecDeleteChar
+            ShortCut = 46
+          end        
+          item
+            Command = ecCut
+            ShortCut = 8238
+          end        
+          item
+            Command = ecDeleteLastChar
+            ShortCut = 8
+          end        
+          item
+            Command = ecDeleteLastChar
+            ShortCut = 8200
+          end        
+          item
+            Command = ecDeleteLastWord
+            ShortCut = 16392
+          end        
+          item
+            Command = ecUndo
+            ShortCut = 32776
+          end        
+          item
+            Command = ecRedo
+            ShortCut = 40968
+          end        
+          item
+            Command = ecLineBreak
+            ShortCut = 13
+          end        
+          item
+            Command = ecSelectAll
+            ShortCut = 16449
+          end        
+          item
+            Command = ecCopy
+            ShortCut = 16451
+          end        
+          item
+            Command = ecBlockIndent
+            ShortCut = 24649
+          end        
+          item
+            Command = ecLineBreak
+            ShortCut = 16461
+          end        
+          item
+            Command = ecInsertLine
+            ShortCut = 16462
+          end        
+          item
+            Command = ecDeleteWord
+            ShortCut = 16468
+          end        
+          item
+            Command = ecBlockUnindent
+            ShortCut = 24661
+          end        
+          item
+            Command = ecPaste
+            ShortCut = 16470
+          end        
+          item
+            Command = ecCut
+            ShortCut = 16472
+          end        
+          item
+            Command = ecDeleteLine
+            ShortCut = 16473
+          end        
+          item
+            Command = ecDeleteEOL
+            ShortCut = 24665
+          end        
+          item
+            Command = ecUndo
+            ShortCut = 16474
+          end        
+          item
+            Command = ecRedo
+            ShortCut = 24666
+          end        
+          item
+            Command = ecGotoMarker0
+            ShortCut = 16432
+          end        
+          item
+            Command = ecGotoMarker1
+            ShortCut = 16433
+          end        
+          item
+            Command = ecGotoMarker2
+            ShortCut = 16434
+          end        
+          item
+            Command = ecGotoMarker3
+            ShortCut = 16435
+          end        
+          item
+            Command = ecGotoMarker4
+            ShortCut = 16436
+          end        
+          item
+            Command = ecGotoMarker5
+            ShortCut = 16437
+          end        
+          item
+            Command = ecGotoMarker6
+            ShortCut = 16438
+          end        
+          item
+            Command = ecGotoMarker7
+            ShortCut = 16439
+          end        
+          item
+            Command = ecGotoMarker8
+            ShortCut = 16440
+          end        
+          item
+            Command = ecGotoMarker9
+            ShortCut = 16441
+          end        
+          item
+            Command = ecSetMarker0
+            ShortCut = 24624
+          end        
+          item
+            Command = ecSetMarker1
+            ShortCut = 24625
+          end        
+          item
+            Command = ecSetMarker2
+            ShortCut = 24626
+          end        
+          item
+            Command = ecSetMarker3
+            ShortCut = 24627
+          end        
+          item
+            Command = ecSetMarker4
+            ShortCut = 24628
+          end        
+          item
+            Command = ecSetMarker5
+            ShortCut = 24629
+          end        
+          item
+            Command = ecSetMarker6
+            ShortCut = 24630
+          end        
+          item
+            Command = ecSetMarker7
+            ShortCut = 24631
+          end        
+          item
+            Command = ecSetMarker8
+            ShortCut = 24632
+          end        
+          item
+            Command = ecSetMarker9
+            ShortCut = 24633
+          end        
+          item
+            Command = EcFoldLevel1
+            ShortCut = 41009
+          end        
+          item
+            Command = EcFoldLevel2
+            ShortCut = 41010
+          end        
+          item
+            Command = EcFoldLevel3
+            ShortCut = 41011
+          end        
+          item
+            Command = EcFoldLevel4
+            ShortCut = 41012
+          end        
+          item
+            Command = EcFoldLevel5
+            ShortCut = 41013
+          end        
+          item
+            Command = EcFoldLevel6
+            ShortCut = 41014
+          end        
+          item
+            Command = EcFoldLevel7
+            ShortCut = 41015
+          end        
+          item
+            Command = EcFoldLevel8
+            ShortCut = 41016
+          end        
+          item
+            Command = EcFoldLevel9
+            ShortCut = 41017
+          end        
+          item
+            Command = EcFoldLevel0
+            ShortCut = 41008
+          end        
+          item
+            Command = EcFoldCurrent
+            ShortCut = 41005
+          end        
+          item
+            Command = EcUnFoldCurrent
+            ShortCut = 41003
+          end        
+          item
+            Command = EcToggleMarkupWord
+            ShortCut = 32845
+          end        
+          item
+            Command = ecNormalSelect
+            ShortCut = 24654
+          end        
+          item
+            Command = ecColumnSelect
+            ShortCut = 24643
+          end        
+          item
+            Command = ecLineSelect
+            ShortCut = 24652
+          end        
+          item
+            Command = ecTab
+            ShortCut = 9
+          end        
+          item
+            Command = ecShiftTab
+            ShortCut = 8201
+          end        
+          item
+            Command = ecMatchBracket
+            ShortCut = 24642
+          end        
+          item
+            Command = ecColSelUp
+            ShortCut = 40998
+          end        
+          item
+            Command = ecColSelDown
+            ShortCut = 41000
+          end        
+          item
+            Command = ecColSelLeft
+            ShortCut = 40997
+          end        
+          item
+            Command = ecColSelRight
+            ShortCut = 40999
+          end        
+          item
+            Command = ecColSelPageDown
+            ShortCut = 40994
+          end        
+          item
+            Command = ecColSelPageBottom
+            ShortCut = 57378
+          end        
+          item
+            Command = ecColSelPageUp
+            ShortCut = 40993
+          end        
+          item
+            Command = ecColSelPageTop
+            ShortCut = 57377
+          end        
+          item
+            Command = ecColSelLineStart
+            ShortCut = 40996
+          end        
+          item
+            Command = ecColSelLineEnd
+            ShortCut = 40995
+          end        
+          item
+            Command = ecColSelEditorTop
+            ShortCut = 57380
+          end        
+          item
+            Command = ecColSelEditorBottom
+            ShortCut = 57379
+          end>
+        MouseActions = <>
+        MouseSelActions = <>
+        Lines.Strings = (
+          'memoLog'
+        )
+        SelectedColor.FrameEdges = sfeAround
+        SelectedColor.BackPriority = 50
+        SelectedColor.ForePriority = 50
+        SelectedColor.FramePriority = 50
+        SelectedColor.BoldPriority = 50
+        SelectedColor.ItalicPriority = 50
+        SelectedColor.UnderlinePriority = 50
+        SelectedColor.StrikeOutPriority = 50
+        inline SynLeftGutterPartList1: TSynGutterPartList
+          object SynGutterMarks1: TSynGutterMarks
+            Width = 24
+            MouseActions = <>
+          end
+          object SynGutterLineNumber1: TSynGutterLineNumber
+            Width = 17
+            MouseActions = <>
+            MarkupInfo.Background = clBtnFace
+            MarkupInfo.Foreground = clNone
+            MarkupInfo.FrameEdges = sfeAround
+            DigitCount = 2
+            ShowOnlyLineNumbersMultiplesOf = 1
+            ZeroStart = False
+            LeadingZeros = False
+          end
+          object SynGutterChanges1: TSynGutterChanges
+            Width = 4
+            MouseActions = <>
+            ModifiedColor = 59900
+            SavedColor = clGreen
+          end
+          object SynGutterSeparator1: TSynGutterSeparator
+            Width = 2
+            MouseActions = <>
+            MarkupInfo.Background = clWhite
+            MarkupInfo.Foreground = clGray
+            MarkupInfo.FrameEdges = sfeAround
+          end
+          object SynGutterCodeFolding1: TSynGutterCodeFolding
+            MouseActions = <>
+            MarkupInfo.Background = clNone
+            MarkupInfo.Foreground = clGray
+            MarkupInfo.FrameEdges = sfeAround
+            MouseActionsExpanded = <>
+            MouseActionsCollapsed = <>
+          end
+        end
+      end
+    end
+  end
+  object pnlTop: TPanel
+    Left = 0
+    Height = 74
+    Top = 0
+    Width = 1035
+    Align = alTop
+    ClientHeight = 74
+    ClientWidth = 1035
+    TabOrder = 1
+    object grpSelectedProject: TGroupBox
+      Left = 208
+      Height = 72
+      Top = 1
+      Width = 826
+      Align = alClient
+      Caption = 'Selected Project'
+      ClientHeight = 54
+      ClientWidth = 822
+      TabOrder = 0
+      Visible = False
+      object lblAcctID: TLabel
+        Left = 37
+        Height = 15
+        Top = 8
+        Width = 41
+        Caption = 'Acct ID:'
+        ParentColor = False
+      end
+      object edtAccountID: TEdit
+        Left = 88
+        Height = 23
+        Top = 4
+        Width = 100
+        TabOrder = 0
+      end
+      object edtOrgID: TEdit
+        Left = 267
+        Height = 23
+        Top = 4
+        Width = 100
+        TabOrder = 1
+      end
+      object lblOrgID: TLabel
+        Left = 216
+        Height = 15
+        Top = 8
+        Width = 37
+        Caption = 'Org ID:'
+        ParentColor = False
+      end
+      object lblProjID: TLabel
+        Left = 424
+        Height = 15
+        Top = 8
+        Width = 38
+        Caption = 'Proj ID:'
+        ParentColor = False
+      end
+      object edtProjectID: TEdit
+        Left = 467
+        Height = 23
+        Top = 4
+        Width = 100
+        TabOrder = 2
+      end
+      object DBText_Project: TDBText
+        Left = 464
+        Height = 17
+        Top = 32
+        Width = 93
+        DataField = 'PROJECTNAME'
+        DataSource = DM_Main.dsProject
+        Font.Color = clBlue
+        Font.Height = -13
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object DBText_Organization: TDBText
+        Left = 224
+        Height = 17
+        Top = 32
+        Width = 130
+        DataField = 'ORGNAME'
+        DataSource = DM_Main.dsOrganization
+        Font.Color = clBlue
+        Font.Height = -13
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object DBText_Account: TDBText
+        Left = 37
+        Height = 17
+        Top = 32
+        Width = 100
+        DataField = 'ACCOUNTNAME'
+        DataSource = DM_Main.dsAccount
+        Font.Color = clBlue
+        Font.Height = -13
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object lblProjID1: TLabel
+        Left = 600
+        Height = 15
+        Top = 12
+        Width = 74
+        Caption = 'ProjConfig ID:'
+        ParentColor = False
+      end
+      object edt_ProjectConfigID: TDBEdit
+        Left = 680
+        Height = 23
+        Top = 7
+        Width = 80
+        DataField = 'ProjectConfig_ID'
+        DataSource = DM_Main.dsProjectConfig_Org
+        ReadOnly = True
+        CharCase = ecNormal
+        MaxLength = 0
+        TabOrder = 3
+      end
+      object DBEdit3: TDBEdit
+        Left = 360
+        Height = 23
+        Top = 32
+        Width = 80
+        DataField = 'ORGANIZATION_ID'
+        DataSource = DM_Main.dsOrganization
+        ReadOnly = True
+        CharCase = ecNormal
+        MaxLength = 0
+        TabOrder = 4
+      end
+    end
+    object lblSelect: TLabel
+      Left = 1
+      Height = 72
+      Top = 1
+      Width = 207
+      Align = alLeft
+      AutoSize = False
+      Caption = 'SELECT an Account, Organization and Project'
+      Font.Height = -16
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      WordWrap = True
+    end
+  end
+  object StatusBar3: TStatusBar
+    Left = 0
+    Height = 23
+    Top = 706
+    Width = 1035
+    Panels = <>
+  end
+  object sWorkbookSource1: TsWorkbookSource
+    AutoDetectFormat = False
+    FileFormat = sfOOXML
+    Options = []
+    left = 664
+    top = 8
+  end
+  object OpenDialog1: TOpenDialog
+    left = 752
+  end
+  object SaveDialog1: TSaveDialog
+    left = 768
+  end
+  object ActionList1: TActionList
+    left = 725
+    top = 11
+    object actLoadOrganizations: TAction
+      Caption = 'actLoadOrganizations'
+      OnExecute = actLoadOrganizationsExecute
+    end
+    object actLoadOrgProject: TAction
+      Caption = 'Load Org Project'
+      OnExecute = actLoadOrgProjectExecute
+    end
+  end
+  object dsDataProject: TOraDataSource
+    DataSet = DM_Main.dataProject
+    OnDataChange = dsDataProjectDataChange
+    left = 384
+    top = 16
+  end
+  object OraDataSource1: TOraDataSource
+    DataSet = DM_Main.sql_core_OrgMapItem
+    OnDataChange = OraDataSource1DataChange
+    left = 384
+    top = 48
+  end
+  object ImageList1: TImageList
+    left = 808
+    top = 24
+    Bitmap = {
+      4C69150000001000000010000000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000000000FF000000FF000000FF008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000000
+      00FFFFFFFFFFFFFFFFFFFFFFFFFF000000FF0080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000000000FFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FF000000FF000000FF0080
+      80000080800000808000008080000080800000808000000000FFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFF0000
+      00FF000000FF008080000080800000808000000000FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000FF00808000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFF000000FFFFFFFFFF000000FF000000FF000000FFFFFFFFFFFFFFFFFFFFFF
+      FFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000
+      00FFFFFFFFFF000000FFFF0000FFFF0000FF00808000000000FFFFFFFFFF0000
+      00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFF
+      FFFF000000FFFF0000FF0080800000808000FF0000FFFF0000FF000000FFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFFFFFF0000
+      00FFFF0000FF0080800000808000008080000080800000808000FF0000FF0000
+      00FF000000FFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFFFFFF000000FFFF00
+      00FF00808000008080000080800000808000008080000080800000808000FF00
+      00FF00808000000000FFFFFFFFFF000000FFFFFFFFFF000000FFFF0000FF0080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000FF0000FFFF0000FF000000FFFFFFFFFF000000FFFF0000FF008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      80000080800000808000FF0000FF000000FFFF0000FF00808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      80007F7F7FFF7F7F7FFF7F7F7FFF008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080007F7F
+      7FFF00808000FFFFFFFFFFFFFFFF7F7F7FFF0080800000808000008080000080
+      80000080800000808000008080000080800000808000008080007F7F7FFF0080
+      8000FFFFFFFF0080800000808000008080007F7F7FFF7F7F7FFF7F7F7FFF0080
+      800000808000008080000080800000808000008080007F7F7FFF00808000FFFF
+      FFFF0080800000808000008080007F7F7FFF00808000FFFFFFFFFFFFFFFF7F7F
+      7FFF7F7F7FFF0080800000808000008080007F7F7FFF00808000FFFFFFFF0080
+      800000808000008080007F7F7FFF00808000FFFFFFFF00808000008080000080
+      8000FFFFFFFF7F7F7FFF008080007F7F7FFF00808000FFFFFFFF008080000080
+      8000008080007F7F7FFF00808000FFFFFFFF0080800000808000008080000080
+      80007F7F7FFF008080007F7F7FFF7F7F7FFF7F7F7FFF00808000008080000080
+      80007F7F7FFF00808000FFFFFFFF008080000080800000808000008080007F7F
+      7FFF008080007F7F7FFF7F7F7FFF7F7F7FFFFFFFFFFF7F7F7FFF008080007F7F
+      7FFF00808000FFFFFFFF008080000080800000808000008080007F7F7FFF0080
+      80007F7F7FFF7F7F7FFFFFFFFFFF008080007F7F7FFF7F7F7FFF7F7F7FFF0080
+      8000FFFFFFFF008080000080800000808000008080007F7F7FFF008080007F7F
+      7FFF7F7F7FFFFFFFFFFF008080000080800000808000FFFFFFFF7F7F7FFF7F7F
+      7FFF7F7F7FFF0080800000808000008080007F7F7FFF008080007F7F7FFF7F7F
+      7FFFFFFFFFFF0080800000808000008080000080800000808000008080007F7F
+      7FFFFFFFFFFF7F7F7FFF008080007F7F7FFF008080007F7F7FFF7F7F7FFFFFFF
+      FFFF008080000080800000808000008080000080800000808000008080000080
+      80007F7F7FFF7F7F7FFF7F7F7FFF008080007F7F7FFF7F7F7FFFFFFFFFFF0080
+      8000008080000080800000808000008080000080800000808000008080000080
+      800000808000FFFFFFFF7F7F7FFF7F7F7FFF7F7F7FFFFFFFFFFF008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000FFFFFFFFFFFFFFFF00808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      800000808000FF0000FF800000FFFF0000FF0080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000FF0000FF800000FFFF0000FFFF0000FFFF0000FFFF0000FF008080000080
+      800000808000008080000080800000808000008080000080800000808000FF00
+      00FF800000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FF0080
+      8000008080000080800000808000008080000080800000808000FF0000FF8000
+      00FFFF0000FF000000FF000000FFFF0000FFFF0000FFFF0000FF000000FF0080
+      80000080800000808000008080000080800000808000FF0000FF800000FFFF00
+      00FFFF0000FFFF0000FF000000FFFF0000FFFF0000FF000000FFFFFFFFFF0000
+      00FFFF0000FF008080000080800000808000FF0000FF800000FFFF0000FFFF00
+      00FF000000FFFF0000FFFF0000FFFF0000FF000000FFFFFFFFFFFFFFFFFFFFFF
+      FFFF000000FFFF0000FF00808000FF0000FF800000FFFF0000FFFF0000FFFF00
+      00FFFF0000FFFF0000FFFF0000FF000000FFFFFFFFFFFFFFFFFFFFFFFFFF0000
+      00FFFF0000FF0080800000808000800000FFFF0000FFFF0000FFFF0000FFFF00
+      00FFFF0000FFFF0000FF000000FFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFF00
+      00FF00808000008080000080800000808000FF0000FFFF0000FFFF0000FFFF00
+      00FFFF0000FF000000FFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFF0000FF0080
+      80000080800000808000008080000080800000808000FF0000FFFF0000FFFF00
+      00FF000000FFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFF0000FF008080000080
+      8000008080000080800000808000008080000080800000808000FF0000FF0000
+      00FFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFF0000FF00808000008080000080
+      800000808000008080000080800000808000008080000080800000808000FF00
+      00FF000000FFFFFFFFFF000000FFFF0000FF0080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000FF0000FF000000FFFF0000FF008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      800000808000FF0000FF00808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080007F7F7FFF7F7F7FFF7F7F7FFF0080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      80007F7F7FFF7F7F7FFFFFFFFFFF008080007F7F7FFF7F7F7FFF008080000080
+      8000008080000080800000808000008080000080800000808000008080007F7F
+      7FFF7F7F7FFFFFFFFFFF008080000080800000808000FFFFFFFF7F7F7FFF0080
+      80000080800000808000008080000080800000808000008080007F7F7FFF7F7F
+      7FFFFFFFFFFF7F7F7FFF7F7F7FFF0080800000808000008080007F7F7FFFFFFF
+      FFFF00808000008080000080800000808000008080007F7F7FFF7F7F7FFFFFFF
+      FFFF00808000008080007F7F7FFFFFFFFFFF008080007F7F7FFF7F7F7FFF7F7F
+      7FFF7F7F7FFF0080800000808000008080007F7F7FFF7F7F7FFFFFFFFFFF0080
+      80007F7F7FFF0080800000808000FFFFFFFF7F7F7FFF7F7F7FFFFFFFFFFF0080
+      80007F7F7FFF7F7F7FFF008080007F7F7FFF7F7F7FFFFFFFFFFF008080000080
+      800000808000FFFFFFFF008080007F7F7FFF7F7F7FFFFFFFFFFF008080007F7F
+      7FFF7F7F7FFFFFFFFFFF008080007F7F7FFFFFFFFFFF00808000008080000080
+      800000808000008080007F7F7FFF7F7F7FFFFFFFFFFF008080007F7F7FFF7F7F
+      7FFFFFFFFFFF0080800000808000008080007F7F7FFF00808000008080000080
+      8000008080007F7F7FFF7F7F7FFFFFFFFFFF008080007F7F7FFF7F7F7FFFFFFF
+      FFFF00808000008080000080800000808000008080007F7F7FFF008080000080
+      80007F7F7FFF7F7F7FFFFFFFFFFF008080007F7F7FFF7F7F7FFFFFFFFFFF0080
+      80000080800000808000008080000080800000808000008080007F7F7FFF7F7F
+      7FFF7F7F7FFFFFFFFFFF008080007F7F7FFF7F7F7FFFFFFFFFFF008080000080
+      8000008080000080800000808000008080000080800000808000008080007F7F
+      7FFF7F7F7FFF008080007F7F7FFF7F7F7FFFFFFFFFFF00808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      80007F7F7FFF7F7F7FFF7F7F7FFFFFFFFFFF0080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080007F7F7FFFFFFFFFFF008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      800000808000008080000080800000808000000000FF00808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000000000FF00FFFFFF000000FF008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000000000FFFFFFFFFF000000FF008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      80000080800000808000000000FF000000FF00FFFFFF000000FF008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000000000FF000000FFFFFFFFFF000000FFFFFFFFFF000000FF008080000080
+      8000008080000080800000808000008080000080800000808000008080000000
+      00FF00FFFFFF000000FF00FFFFFF000000FF00FFFFFF000000FF008080000080
+      8000008080000080800000808000008080000080800000808000008080000000
+      00FFFFFFFFFF000000FFFFFFFFFF000000FFFFFFFFFF000000FF000000FF0080
+      8000008080000080800000808000008080000080800000808000008080000000
+      00FF00FFFFFFFFFFFFFF00FFFFFFFFFFFFFF00FFFFFF000000FF00FFFFFF0000
+      00FF008080000080800000808000008080000080800000808000008080000000
+      00FFFFFFFFFF00FFFFFFFFFFFFFF00FFFFFFFFFFFFFF000000FFFFFFFFFF0000
+      00FF008080000080800000808000008080000080800000808000008080000000
+      00FF00FFFFFFFFFFFFFF00FFFFFFFFFFFFFF00FFFFFFFFFFFFFF00FFFFFF0000
+      00FF008080000080800000808000008080000080800000808000008080000080
+      8000000000FF00FFFFFFFFFFFFFF00FFFFFFFFFFFFFF00FFFFFF000000FF0080
+      8000008080000080800000808000008080000080800000808000008080000000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0080
+      8000008080000080800000808000008080000080800000808000008080000000
+      00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FF000000FF0080
+      8000008080000080800000808000008080000080800000808000000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0080
+      8000008080000080800000808000008080000080800000808000000000FF00FF
+      FFFF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0080
+      8000008080000080800000808000008080000080800000808000000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0080
+      8000008080000080800000808000800080008000800080008000800080008000
+      8000800080008000800080008000800080008000800080008000800080008000
+      8000800080008000800080008000800080008000800080008000800080008000
+      8000800080008000800080008000800080008000800080008000800080008000
+      8000800080008000800080008000800080008000800080008000000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF80008000800080008000
+      8000800080008000800080008000800080008000800080008000000000FFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FF000000FF800080008000
+      8000800080008000800080008000800080008000800080008000000000FFFFFF
+      FFFF000000FF000000FFFFFFFFFFFFFFFFFF000000FFFFFFFFFF000000FF8000
+      8000800080008000800080008000800080008000800080008000000000FFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FF000000FF000000FF0000
+      00FF800080008000800080008000800080008000800080008000000000FFFFFF
+      FFFF000000FF000000FF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000
+      00FF800080008000800080008000800080008000800080008000000000FFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000
+      00FF800080008000800080008000800080008000800080008000000000FFFFFF
+      FFFF000000FF000000FF000000FF000000FF000000FF000000FFFFFFFFFF0000
+      00FF800080008000800080008000800080008000800080008000000000FFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000
+      00FF800080008000800080008000800080008000800080008000000000FFFFFF
+      FFFF000000FF000000FF000000FF000000FF000000FF000000FFFFFFFFFF0000
+      00FF800080008000800080008000800080008000800080008000000000FFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000
+      00FF800080008000800080008000800080008000800080008000000000FFFFFF
+      FFFF000000FF000000FF000000FF000000FFFFFFFFFFFFFFFFFFFFFFFFFF0000
+      00FF800080008000800080008000800080008000800080008000000000FFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000
+      00FF800080008000800080008000800080008000800080008000000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF800080008000800080008000800080008000800080008000800080008000
+      8000800080008000800080008000800080008000800080008000800080008000
+      8000800080008000800080008000800080008000800080008000800080008000
+      8000800080008000800080008000800080008000800080008000800080008000
+      8000800080008000800080008000800080008000800080008000800080008000
+      8000800080008000800080008000800080008000800080008000800080008000
+      800080008000800080008000800080008000800080007F7F7FFF7F7F7FFF7F7F
+      7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF8000800080008000800080008000
+      800080008000800080008000800080008000800080007F7F7FFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFF7F7F7FFF7F7F7FFF80008000800080008000
+      800080008000800080008000800080008000800080007F7F7FFFFFFFFFFF7F7F
+      7FFF7F7F7FFF80008000800080007F7F7FFFFFFFFFFF7F7F7FFF800080008000
+      800080008000800080008000800080008000800080007F7F7FFFFFFFFFFF8000
+      8000FFFFFFFFFFFFFFFF800080007F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF8000
+      800080008000800080008000800080008000800080007F7F7FFFFFFFFFFF7F7F
+      7FFF7F7F7FFF7F7F7FFF8000800080008000FFFFFFFFFFFFFFFF7F7F7FFFFFFF
+      FFFF80008000800080008000800080008000800080007F7F7FFFFFFFFFFF8000
+      8000FFFFFFFFFFFFFFFFFFFFFFFF8000800080008000800080007F7F7FFFFFFF
+      FFFF80008000800080008000800080008000800080007F7F7FFFFFFFFFFF7F7F
+      7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF800080007F7F7FFFFFFF
+      FFFF80008000800080008000800080008000800080007F7F7FFFFFFFFFFF8000
+      8000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7F7F7FFFFFFF
+      FFFF80008000800080008000800080008000800080007F7F7FFFFFFFFFFF7F7F
+      7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF800080007F7F7FFFFFFF
+      FFFF80008000800080008000800080008000800080007F7F7FFFFFFFFFFF8000
+      8000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7F7F7FFFFFFF
+      FFFF80008000800080008000800080008000800080007F7F7FFFFFFFFFFF7F7F
+      7FFF7F7F7FFF7F7F7FFF7F7F7FFF8000800080008000800080007F7F7FFFFFFF
+      FFFF80008000800080008000800080008000800080007F7F7FFFFFFFFFFF8000
+      8000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF80008000800080007F7F7FFFFFFF
+      FFFF80008000800080008000800080008000800080007F7F7FFF7F7F7FFF7F7F
+      7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFFFFFF
+      FFFF800080008000800080008000800080008000800080008000FFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFF800080008000800080008000000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF80008000800080008000800080008000800080008000
+      8000800080008000800080008000000000FFFFFFFFFF000000FF000000FF0000
+      00FF000000FF000000FF000000FF000000FF8000800080008000800080008000
+      8000800080008000800080008000000000FFFFFFFFFF000000FFFFFFFFFF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF800080008000
+      8000800080008000800080008000000000FFFFFFFFFF000000FFFFFFFFFF0000
+      00FFFFFFFFFF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF800080008000800080008000000000FFFFFFFFFF000000FFFFFFFFFF0000
+      00FFFFFFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000
+      00FF000000FF8000800080008000000000FFFFFFFFFF000000FFFFFFFFFF0000
+      00FFFFFFFFFF000000FFFFFFFFFF000000FF000000FFFFFFFFFFFFFFFFFF0000
+      00FFFFFFFFFF000000FF80008000000000FFFFFFFFFF000000FFFFFFFFFF0000
+      00FFFFFFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000
+      00FF000000FF000000FF000000FF000000FFFFFFFFFF000000FFFFFFFFFF0000
+      00FFFFFFFFFF000000FFFFFFFFFF000000FF000000FF000000FFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FF000000FFFFFFFFFF000000FFFFFFFFFF0000
+      00FFFFFFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FF000000FFFFFFFFFF000000FFFFFFFFFF0000
+      00FFFFFFFFFF000000FFFFFFFFFF000000FF000000FF000000FF000000FF0000
+      00FF000000FFFFFFFFFF000000FF000000FFFFFFFFFF000000FFFFFFFFFF0000
+      00FFFFFFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FF000000FFFFFFFFFF000000FFFFFFFFFF0000
+      00FFFFFFFFFF000000FFFFFFFFFF000000FF000000FF000000FF000000FF0000
+      00FF000000FFFFFFFFFF000000FF000000FF000000FF000000FFFFFFFFFF0000
+      00FFFFFFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FF8000800080008000000000FF000000FF0000
+      00FFFFFFFFFF000000FFFFFFFFFF000000FF000000FF000000FF000000FFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FF800080008000800080008000800080000000
+      00FF000000FF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FF800080008000800080008000800080008000
+      800080008000000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F
+      7FFF7F7F7FFF7F7F7FFF80008000800080008000800080008000800080008000
+      80008000800080008000800080007F7F7FFFFFFFFFFF7F7F7FFF7F7F7FFF7F7F
+      7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF8000800080008000800080008000
+      80008000800080008000800080007F7F7FFFFFFFFFFF7F7F7FFFFFFFFFFF7F7F
+      7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF800080008000
+      80008000800080008000800080007F7F7FFFFFFFFFFF7F7F7FFFFFFFFFFF7F7F
+      7FFFFFFFFFFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F
+      7FFF8000800080008000800080007F7F7FFFFFFFFFFF7F7F7FFFFFFFFFFF7F7F
+      7FFFFFFFFFFF7F7F7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7F7F
+      7FFF7F7F7FFF80008000800080007F7F7FFFFFFFFFFF7F7F7FFFFFFFFFFF7F7F
+      7FFFFFFFFFFF7F7F7FFFFFFFFFFF7F7F7FFF7F7F7FFF80008000800080007F7F
+      7FFFFFFFFFFF7F7F7FFF800080007F7F7FFFFFFFFFFF7F7F7FFFFFFFFFFF7F7F
+      7FFFFFFFFFFF7F7F7FFFFFFFFFFF80008000FFFFFFFFFFFFFFFF800080007F7F
+      7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFFFFFFFFFF7F7F7FFFFFFFFFFF7F7F
+      7FFFFFFFFFFF7F7F7FFFFFFFFFFF7F7F7FFF7F7F7FFF7F7F7FFF800080008000
+      8000FFFFFFFFFFFFFFFF7F7F7FFF7F7F7FFFFFFFFFFF7F7F7FFFFFFFFFFF7F7F
+      7FFFFFFFFFFF7F7F7FFFFFFFFFFF80008000FFFFFFFFFFFFFFFFFFFFFFFF8000
+      800080008000800080007F7F7FFF7F7F7FFFFFFFFFFF7F7F7FFFFFFFFFFF7F7F
+      7FFFFFFFFFFF7F7F7FFFFFFFFFFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F
+      7FFF7F7F7FFF800080007F7F7FFF7F7F7FFFFFFFFFFF7F7F7FFFFFFFFFFF7F7F
+      7FFFFFFFFFFF7F7F7FFFFFFFFFFF80008000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF7F7F7FFF7F7F7FFFFFFFFFFF7F7F7FFFFFFFFFFF7F7F
+      7FFFFFFFFFFF7F7F7FFFFFFFFFFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F
+      7FFF7F7F7FFF800080007F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFFFFFFFFFF7F7F
+      7FFFFFFFFFFF7F7F7FFFFFFFFFFF80008000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF7F7F7FFF80008000FFFFFFFF7F7F7FFF7F7F7FFF7F7F
+      7FFFFFFFFFFF7F7F7FFFFFFFFFFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF8000
+      800080008000800080007F7F7FFF800080008000800080008000FFFFFFFF7F7F
+      7FFF7F7F7FFF7F7F7FFFFFFFFFFF80008000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFF80008000800080007F7F7FFF800080008000800080008000800080008000
+      8000FFFFFFFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F
+      7FFF7F7F7FFF7F7F7FFF7F7F7FFF008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      80000080800000808000FFFFFFFF00808000000000FF000000FF000000FF0000
+      00FF000000FF008080000080800000808000000000FF000000FF000000FF0000
+      00FF00808000FFFFFFFFFFFFFFFF00808000000000FFFFFF00FFFFFF00FFFFFF
+      00FF000000FF0080800000808000008080000080800000808000000000FF0000
+      00FF000000FFFFFFFFFFFFFFFFFF00808000000000FFFFFF00FFFFFF00FFFFFF
+      00FF000000FF0080800000808000008080000080800000808000000000FF0000
+      00FF000000FFFFFFFFFFFFFFFFFF00808000000000FFFFFF00FFFFFF00FFFFFF
+      00FF000000FF0080800000808000008080000080800000808000000000FF0000
+      00FF000000FFFFFFFFFFFFFFFFFF00808000000000FF000000FF000000FF0000
+      00FF000000FF008080000080800000808000000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF008080000080800000808000008080000080
+      800000808000008080000080800000808000FFFFFFFF000000FF000000FF0000
+      00FF000000FF000000FFFFFFFFFF008080000080800000808000008080000080
+      8000008080000080800000808000FFFFFFFFFFFFFFFFFFFFFFFF000000FF0000
+      00FF000000FFFFFFFFFFFFFFFFFF008080000080800000808000008080000080
+      80000080800000808000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000
+      00FFFFFFFFFFFFFFFFFFFFFFFFFF008080000080800000808000008080000080
+      800000808000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFF008080000080800000808000008080000080
+      8000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FF000000FF0000
+      00FF000000FF000000FFFFFFFFFF00808000008080000080800000808000FFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FF0000FFFF0000
+      FFFF0000FFFF000000FFFFFFFFFF008080000080800000808000FFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FF0000FFFF0000
+      FFFF0000FFFF000000FFFFFFFFFF0080800000808000FFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FF0000FFFF0000
+      FFFF0000FFFF000000FFFFFFFFFF00808000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FF000000FF0000
+      00FF000000FF000000FFFFFFFFFF00808000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFF008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080007F7F7FFF7F7F7FFF7F7F7FFF7F7F
+      7FFF7F7F7FFF0080800000808000008080007F7F7FFF7F7F7FFF7F7F7FFF7F7F
+      7FFF008080000080800000808000008080007F7F7FFFFFFFFFFFFFFFFFFFFFFF
+      FFFF7F7F7FFFFFFFFFFF008080000080800000808000FFFFFFFF7F7F7FFF7F7F
+      7FFF7F7F7FFF0080800000808000008080007F7F7FFFFFFFFFFF008080000080
+      80007F7F7FFFFFFFFFFF008080000080800000808000008080007F7F7FFF7F7F
+      7FFF7F7F7FFFFFFFFFFF00808000008080007F7F7FFFFFFFFFFF008080000080
+      80007F7F7FFFFFFFFFFF008080000080800000808000008080007F7F7FFF7F7F
+      7FFF7F7F7FFFFFFFFFFF00808000008080007F7F7FFF7F7F7FFF7F7F7FFF7F7F
+      7FFF7F7F7FFFFFFFFFFF00808000008080007F7F7FFF7F7F7FFF7F7F7FFF7F7F
+      7FFF7F7F7FFF7F7F7FFF7F7F7FFF0080800000808000FFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF00808000008080007F7F7FFF7F7F7FFF7F7F7FFF7F7F
+      7FFF7F7F7FFF7F7F7FFFFFFFFFFF008080000080800000808000008080000080
+      80000080800000808000008080000080800000808000008080007F7F7FFF7F7F
+      7FFF7F7F7FFFFFFFFFFFFFFFFFFF008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080007F7F
+      7FFFFFFFFFFFFFFFFFFF00808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000FFFFFFFF0080800000808000008080000080800000808000008080000080
+      800000808000008080000080800000808000008080007F7F7FFF7F7F7FFF7F7F
+      7FFF7F7F7FFF7F7F7FFF00808000008080000080800000808000008080000080
+      800000808000008080000080800000808000008080007F7F7FFFFFFFFFFFFFFF
+      FFFFFFFFFFFF7F7F7FFFFFFFFFFF008080000080800000808000008080000080
+      800000808000008080000080800000808000008080007F7F7FFFFFFFFFFF0080
+      8000008080007F7F7FFFFFFFFFFF008080000080800000808000008080000080
+      800000808000008080000080800000808000008080007F7F7FFFFFFFFFFF0080
+      8000008080007F7F7FFFFFFFFFFF008080000080800000808000008080000080
+      800000808000008080000080800000808000008080007F7F7FFF7F7F7FFF7F7F
+      7FFF7F7F7FFF7F7F7FFFFFFFFFFF008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000FFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFF008080000080800000808000000000FF0080
+      800000808000000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF0080800000808000008080000080800000808000000000FF0000FFFF0000
+      00FF00808000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000
+      00FF000000FF0080800000808000008080000080800000808000000000FF00FF
+      FFFF000000FF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000
+      00FFFFFFFFFF000000FF00808000008080000080800000808000008080000000
+      00FF00FFFFFF000000FFFFFFFFFFFFFFFFFF000000FF000000FFFFFFFFFF0000
+      00FFFFFFFFFFFFFFFFFF000000FF008080000080800000808000008080000080
+      8000000000FF00FFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000
+      00FF000000FF000000FF000000FF008080000080800000808000000000FF0000
+      00FF000000FF000000FF00FFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FF000000FF000000FF000000FF00FFFFFFFFFF
+      FFFF00FFFFFF000000FF000000FF00FFFFFF000000FFFFFFFFFFFFFFFFFF0000
+      00FF000000FFFFFFFFFF000000FFFFFF00FF000000FF00FFFFFFFFFFFFFF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FFFFFF00FF000000FFFFFFFFFF00FFFFFFFFFF
+      FFFF00FFFFFFFFFFFFFF00FFFFFFFFFFFFFF00FFFFFFFFFFFFFF000000FFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FFFFFF00FF000000FF00FFFFFFFFFFFFFF00FF
+      FFFFFFFFFFFF000000FF000000FF000000FF000000FF000000FF00FFFFFF0000
+      00FFFFFFFFFFFFFFFFFF000000FFFFFF00FF000000FFFFFFFFFF00FFFFFFFFFF
+      FFFF00FFFFFFFFFFFFFF00FFFFFFFFFFFFFF000000FFFFFFFFFF000000FF0000
+      00FFFFFFFFFFFFFFFFFF000000FFFFFF00FF000000FF00FFFFFFFFFFFFFF00FF
+      FFFFFFFFFFFF000000FF000000FF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFF000000FFFFFFFFFF000000FFFFFF00FF000000FF000000FF00FFFFFFFFFF
+      FFFF00FFFFFFFFFFFFFF00FFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FF000000FF000000FF00808000000000FF0000
+      00FF000000FF000000FF000000FFFFFFFFFFFFFFFFFF000000FFFFFFFFFF0000
+      00FF000000FFFFFFFFFF000000FF008080000080800000808000008080000080
+      800000808000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FF008080000080800000808000008080000080
+      800000808000000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF0080800000808000008080007F7F7FFF0080
+      8000008080007F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F
+      7FFF00808000008080000080800000808000008080007F7F7FFF7F7F7FFF7F7F
+      7FFF008080007F7F7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7F7F
+      7FFF7F7F7FFF00808000008080000080800000808000008080007F7F7FFFFFFF
+      FFFF7F7F7FFF7F7F7FFFFFFFFFFF008080000080800000808000008080007F7F
+      7FFFFFFFFFFF7F7F7FFF00808000008080000080800000808000008080007F7F
+      7FFF008080007F7F7FFFFFFFFFFF008080007F7F7FFF7F7F7FFF008080007F7F
+      7FFFFFFFFFFF008080007F7F7FFF008080000080800000808000008080000080
+      80007F7F7FFF008080007F7F7FFF0080800000808000FFFFFFFFFFFFFFFF7F7F
+      7FFF7F7F7FFF7F7F7FFF7F7F7FFF0080800000808000008080007F7F7FFF7F7F
+      7FFF7F7F7FFF7F7F7FFF008080007F7F7FFF0080800000808000008080000080
+      8000FFFFFFFFFFFFFFFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF00808000FFFF
+      FFFFFFFFFFFF7F7F7FFF7F7F7FFF008080007F7F7FFF00808000008080007F7F
+      7FFF7F7F7FFF008080007F7F7FFF7F7F7FFF7F7F7FFFFFFFFFFFFFFFFFFF7F7F
+      7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF008080000080
+      8000FFFFFFFFFFFFFFFF7F7F7FFF7F7F7FFF7F7F7FFFFFFFFFFF008080000080
+      8000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7F7F7FFF0080
+      800000808000008080007F7F7FFF7F7F7FFF7F7F7FFFFFFFFFFF008080000080
+      8000008080007F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF008080007F7F
+      7FFF00808000008080007F7F7FFF7F7F7FFF7F7F7FFFFFFFFFFF008080000080
+      80000080800000808000FFFFFFFFFFFFFFFF7F7F7FFFFFFFFFFF7F7F7FFF7F7F
+      7FFFFFFFFFFF008080007F7F7FFF7F7F7FFF7F7F7FFFFFFFFFFF008080000080
+      8000008080007F7F7FFF7F7F7FFF7F7F7FFF00808000FFFFFFFF00808000FFFF
+      FFFF7F7F7FFF008080007F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF008080000080
+      80000080800000808000FFFFFFFF7F7F7FFFFFFFFFFF00808000008080000080
+      800000808000FFFFFFFF7F7F7FFF7F7F7FFF7F7F7FFFFFFFFFFF7F7F7FFF7F7F
+      7FFF7F7F7FFF7F7F7FFF7F7F7FFF00808000FFFFFFFF7F7F7FFF008080007F7F
+      7FFF7F7F7FFF008080007F7F7FFF00808000FFFFFFFFFFFFFFFF00808000FFFF
+      FFFFFFFFFFFF7F7F7FFFFFFFFFFFFFFFFFFF0080800000808000FFFFFFFF0080
+      8000FFFFFFFFFFFFFFFF7F7F7FFF008080000080800000808000008080000080
+      8000008080007F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F
+      7FFF7F7F7FFF7F7F7FFF7F7F7FFF00808000008080000080800000FFFFFF0080
+      800000808000000000FF000000FF000000FF000000FF000000FF008080000080
+      800000808000008080000080800000808000008080000080800000FFFFFF0080
+      8000000000FFBFBFBFFFBFBFBFFFBFBFBFFFBFBFBFFFBFBFBFFF000000FF0080
+      800000808000008080000080800000FFFFFF008080000080800000FFFFFF7F7F
+      7FFF7F7F7FFFBFBFBFFF000000FF000000FF000000FFBFBFBFFF7F7F7FFF7F7F
+      7FFF0080800000808000008080000080800000FFFFFF0080800000FFFFFF0000
+      00FFBFBFBFFF000000FF008080000080800000808000000000FFBFBFBFFF0000
+      00FF008080000080800000808000008080000080800000FFFFFF00FFFFFF0000
+      00FFBFBFBFFF000000FF008080000080800000808000000000FFBFBFBFFF0000
+      00FF00808000008080000080800000FFFFFF00FFFFFF00FFFFFF00FFFFFF7F7F
+      7FFF000000FF7F7F7FFF00FFFFFF00FFFFFF00808000000000FFBFBFBFFF0000
+      00FF008080000080800000808000008080000080800000FFFFFF00FFFFFF00FF
+      FFFF00FFFFFF00808000008080000080800000808000000000FFBFBFBFFF0000
+      00FF0080800000808000008080000080800000FFFFFF00808000000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF008080000080800000FFFFFF00808000000000FFBFBFBFFFBFBF
+      BFFFBFBFBFFFBFBFBFFFBFBFBFFFBFBFBFFFBFBFBFFFBFBFBFFFBFBFBFFFBFBF
+      BFFFBFBFBFFF000000FF008080000080800000808000000000FF7F7F7FFF7F7F
+      7FFF7F7F7FFF7F7F7FFF000000FF000000FF000000FF7F7F7FFF7F7F7FFF7F7F
+      7FFF7F7F7FFF000000FF008080000080800000808000000000FFBFBFBFFFBFBF
+      BFFFBFBFBFFFBFBFBFFF000000FF000000FF000000FFBFBFBFFFBFBFBFFFBFBF
+      BFFFBFBFBFFF000000FF008080000080800000808000000000FF7F7F7FFF7F7F
+      7FFF7F7F7FFFBFBFBFFFBFBFBFFF000000FFBFBFBFFFBFBFBFFF7F7F7FFF7F7F
+      7FFF7F7F7FFF000000FF008080000080800000808000000000FFBFBFBFFFBFBF
+      BFFFBFBFBFFFBFBFBFFF7F7F7FFF000000FF7F7F7FFFBFBFBFFFBFBFBFFFBFBF
+      BFFFBFBFBFFF000000FF00808000008080000080800000808000000000FF7F7F
+      7FFF7F7F7FFFBFBFBFFF7F7F7FFF000000FF7F7F7FFFBFBFBFFF7F7F7FFF7F7F
+      7FFF000000FF0080800000808000008080000080800000808000008080000000
+      00FF000000FFBFBFBFFFBFBFBFFFBFBFBFFFBFBFBFFFBFBFBFFF000000FF0000
+      00FF008080000080800000808000008080000080800000808000008080000080
+      800000808000000000FF000000FF000000FF000000FF000000FF008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080007F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      80007F7F7FFF00808000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7F7F7FFF0080
+      8000008080000080800000808000008080000080800000808000008080007F7F
+      7FFF00808000FFFFFFFF7F7F7FFF7F7F7FFF7F7F7FFF00808000008080007F7F
+      7FFF008080000080800000808000008080000080800000808000008080007F7F
+      7FFFFFFFFFFF7F7F7FFF00808000FFFFFFFFFFFFFFFF7F7F7FFF008080007F7F
+      7FFFFFFFFFFF0080800000808000008080000080800000808000008080007F7F
+      7FFFFFFFFFFF7F7F7FFFFFFFFFFF00808000008080007F7F7FFFFFFFFFFF7F7F
+      7FFFFFFFFFFF0080800000808000008080000080800000808000008080000080
+      80007F7F7FFF00808000FFFFFFFF00808000008080007F7F7FFFFFFFFFFF7F7F
+      7FFFFFFFFFFF0080800000808000008080000080800000808000008080000080
+      800000808000FFFFFFFF0080800000808000008080007F7F7FFFFFFFFFFF7F7F
+      7FFFFFFFFFFF00808000008080000080800000808000008080007F7F7FFF7F7F
+      7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F
+      7FFF7F7F7FFF008080000080800000808000008080007F7F7FFF00808000FFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF7F7F7FFF0080800000808000008080007F7F7FFFFFFFFFFF0080
+      800000808000008080007F7F7FFF7F7F7FFF7F7F7FFF00808000008080000080
+      8000008080007F7F7FFFFFFFFFFF00808000008080007F7F7FFFFFFFFFFF0080
+      800000808000008080007F7F7FFF7F7F7FFF7F7F7FFFFFFFFFFF008080000080
+      8000008080007F7F7FFFFFFFFFFF00808000008080007F7F7FFFFFFFFFFF0080
+      80000080800000808000008080007F7F7FFFFFFFFFFFFFFFFFFF008080000080
+      8000008080007F7F7FFFFFFFFFFF00808000008080007F7F7FFFFFFFFFFF0080
+      80000080800000808000008080007F7F7FFFFFFFFFFF00808000008080000080
+      8000008080007F7F7FFFFFFFFFFF0080800000808000008080007F7F7FFF0080
+      80000080800000808000008080007F7F7FFFFFFFFFFF00808000008080000080
+      80007F7F7FFF00808000FFFFFFFF008080000080800000808000008080007F7F
+      7FFF7F7F7FFF008080000080800000808000FFFFFFFF008080007F7F7FFF7F7F
+      7FFF00808000FFFFFFFF00808000008080000080800000808000008080000080
+      8000FFFFFFFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF00808000FFFF
+      FFFFFFFFFFFF0080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      800000808000000000FF000000FF000000FF000000FF000000FF008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000000000FFBFBFBFFFBFBFBFFFBFBFBFFFBFBFBFFFBFBFBFFF000000FF0080
+      8000008080000080800000808000008080000080800000808000008080007F7F
+      7FFF7F7F7FFFBFBFBFFF000000FF000000FF000000FFBFBFBFFF7F7F7FFF7F7F
+      7FFF008080000080800000808000008080000080800000808000008080000000
+      00FFBFBFBFFF000000FF008080000080800000808000000000FFBFBFBFFF0000
+      00FF008080000080800000808000008080000080800000808000008080000000
+      00FFBFBFBFFF000000FF008080000080800000808000000000FFBFBFBFFF0000
+      00FF008080000080800000808000008080000080800000808000008080000000
+      00FFBFBFBFFF000000FF008080000080800000808000000000FFBFBFBFFF0000
+      00FF008080000080800000808000008080000080800000808000000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF00808000008080000080800000808000000000FFBFBFBFFFBFBF
+      BFFFBFBFBFFFBFBFBFFFBFBFBFFFBFBFBFFFBFBFBFFFBFBFBFFFBFBFBFFFBFBF
+      BFFFBFBFBFFF000000FF008080000080800000808000000000FF7F7F7FFF7F7F
+      7FFF7F7F7FFF7F7F7FFF000000FF000000FF000000FF7F7F7FFF7F7F7FFF7F7F
+      7FFF7F7F7FFF000000FF008080000080800000808000000000FFBFBFBFFFBFBF
+      BFFFBFBFBFFFBFBFBFFF000000FF000000FF000000FFBFBFBFFFBFBFBFFFBFBF
+      BFFFBFBFBFFF000000FF008080000080800000808000000000FF7F7F7FFF7F7F
+      7FFF7F7F7FFFBFBFBFFFBFBFBFFF000000FFBFBFBFFFBFBFBFFF7F7F7FFF7F7F
+      7FFF7F7F7FFF000000FF008080000080800000808000000000FFBFBFBFFFBFBF
+      BFFFBFBFBFFFBFBFBFFF7F7F7FFF000000FF7F7F7FFFBFBFBFFFBFBFBFFFBFBF
+      BFFFBFBFBFFF000000FF00808000008080000080800000808000000000FF7F7F
+      7FFF7F7F7FFFBFBFBFFF7F7F7FFF000000FF7F7F7FFFBFBFBFFF7F7F7FFF7F7F
+      7FFF000000FF0080800000808000008080000080800000808000008080000000
+      00FF000000FFBFBFBFFFBFBFBFFFBFBFBFFFBFBFBFFFBFBFBFFF000000FF0000
+      00FF008080000080800000808000008080000080800000808000008080000080
+      800000808000000000FF000000FF000000FF000000FF000000FF008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080007F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      80007F7F7FFF00808000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7F7F7FFF0080
+      8000008080000080800000808000008080000080800000808000008080007F7F
+      7FFF00808000FFFFFFFF7F7F7FFF7F7F7FFF7F7F7FFF00808000008080007F7F
+      7FFF008080000080800000808000008080000080800000808000008080007F7F
+      7FFFFFFFFFFF7F7F7FFF00808000FFFFFFFFFFFFFFFF7F7F7FFF008080007F7F
+      7FFFFFFFFFFF0080800000808000008080000080800000808000008080007F7F
+      7FFFFFFFFFFF7F7F7FFFFFFFFFFF00808000008080007F7F7FFFFFFFFFFF7F7F
+      7FFFFFFFFFFF0080800000808000008080000080800000808000008080007F7F
+      7FFFFFFFFFFF7F7F7FFFFFFFFFFF00808000008080007F7F7FFFFFFFFFFF7F7F
+      7FFFFFFFFFFF00808000008080000080800000808000008080007F7F7FFF7F7F
+      7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F
+      7FFF7F7F7FFF008080000080800000808000008080007F7F7FFF00808000FFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF7F7F7FFF0080800000808000008080007F7F7FFFFFFFFFFF0080
+      800000808000008080007F7F7FFF7F7F7FFF7F7F7FFF00808000008080000080
+      8000008080007F7F7FFFFFFFFFFF00808000008080007F7F7FFFFFFFFFFF0080
+      800000808000008080007F7F7FFF7F7F7FFF7F7F7FFFFFFFFFFF008080000080
+      8000008080007F7F7FFFFFFFFFFF00808000008080007F7F7FFFFFFFFFFF0080
+      80000080800000808000008080007F7F7FFFFFFFFFFFFFFFFFFF008080000080
+      8000008080007F7F7FFFFFFFFFFF00808000008080007F7F7FFFFFFFFFFF0080
+      80000080800000808000008080007F7F7FFFFFFFFFFF00808000008080000080
+      8000008080007F7F7FFFFFFFFFFF0080800000808000008080007F7F7FFF0080
+      80000080800000808000008080007F7F7FFFFFFFFFFF00808000008080000080
+      80007F7F7FFF00808000FFFFFFFF008080000080800000808000008080007F7F
+      7FFF7F7F7FFF008080000080800000808000FFFFFFFF008080007F7F7FFF7F7F
+      7FFF00808000FFFFFFFF00808000008080000080800000808000008080000080
+      8000FFFFFFFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF00808000FFFF
+      FFFFFFFFFFFF00808000008080008000800080008000000000FF000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF80008000800080008000800080008000000000FF7F7F7FFF7F7F
+      7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF000000FF000000FF000000FF7F7F
+      7FFF000000FF80008000800080008000800080008000000000FF000000FF0000
+      00FF000000FF000000FF000000FF000000FFFFFFFFFFFFFFFFFFFFFFFFFF0000
+      00FF000000FF80008000800080008000800080008000000000FFFFFFFFFF7F7F
+      7FFF7F7F7FFF7F7F7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFF000000FF80008000800080008000800080008000000000FF000000FFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF800080008000800080008000000000FF000000FFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFF000000FF000000FF80008000000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF000000FF00FFFFFF00FFFFFF00FFFFFF00FF
+      FFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FF
+      FFFF00FFFFFF00FFFFFF000000FF000000FF00FFFFFF00FFFFFF00FFFFFF00FF
+      FFFF000000FF000000FF000000FF000000FF000000FF000000FF000000FF00FF
+      FFFF00FFFFFF00FFFFFF000000FF000000FF00FFFFFF00FFFFFF00FFFFFF00FF
+      FFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FF00FF
+      FFFF00FFFFFF00FFFFFF000000FF000000FF00FFFFFF00FFFFFF00FFFFFF00FF
+      FFFF000000FF000000FF000000FF000000FF000000FF000000FF000000FF00FF
+      FFFF00FFFFFF00FFFFFF000000FF000000FF00FFFFFF00FFFFFF00FFFFFF00FF
+      FFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FF
+      FFFF00FFFFFF00FFFFFF000000FF000000FF00FFFFFF00FFFFFF00FFFFFF0000
+      00FF7F7F7FFF7F7F7FFF00FFFFFF00FFFFFF00FFFFFF7F7F7FFF7F7F7FFF0000
+      00FF00FFFFFF00FFFFFF000000FF000000FF00FFFFFF00FFFFFF00FFFFFF00FF
+      FFFF000000FF000000FF000000FF000000FF000000FF000000FF000000FF00FF
+      FFFF00FFFFFF00FFFFFF000000FF000000FF00FFFFFF00FFFFFF00FFFFFF00FF
+      FFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FF
+      FFFF00FFFFFF00FFFFFF000000FF80008000000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF8000800080008000800080007F7F7FFF7F7F7FFF7F7F
+      7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F
+      7FFF7F7F7FFF800080008000800080008000800080007F7F7FFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7F7F7FFF7F7F7FFF7F7F7FFFFFFF
+      FFFF7F7F7FFFFFFFFFFF8000800080008000800080007F7F7FFF7F7F7FFF7F7F
+      7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF80008000FFFFFFFFFFFFFFFF7F7F
+      7FFF7F7F7FFFFFFFFFFF8000800080008000800080007F7F7FFFFFFFFFFF7F7F
+      7FFF7F7F7FFF7F7F7FFFFFFFFFFFFFFFFFFFFFFFFFFF80008000800080008000
+      80007F7F7FFFFFFFFFFF8000800080008000800080007F7F7FFF7F7F7FFF8000
+      8000FFFFFFFFFFFFFFFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F
+      7FFF7F7F7FFFFFFFFFFF80008000800080007F7F7FFF7F7F7FFFFFFFFFFFFFFF
+      FFFF800080008000800080008000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFF7F7F7FFF7F7F7FFF800080007F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F
+      7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F
+      7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF7F7F7FFF7F7F7FFFFFFFFFFF80008000800080008000
+      80007F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF8000
+      800080008000800080007F7F7FFF7F7F7FFFFFFFFFFF80008000800080008000
+      80007F7F7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7F7F7FFFFFFF
+      FFFF80008000800080007F7F7FFF7F7F7FFFFFFFFFFF80008000800080008000
+      80007F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFFFFFF
+      FFFF80008000800080007F7F7FFF7F7F7FFFFFFFFFFF80008000800080008000
+      800080008000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFF80008000800080007F7F7FFF7F7F7FFFFFFFFFFF80008000800080007F7F
+      7FFF7F7F7FFF80008000800080008000800080008000800080007F7F7FFF7F7F
+      7FFF80008000800080007F7F7FFF7F7F7FFFFFFFFFFF80008000800080008000
+      80007F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFFFFFF
+      FFFFFFFFFFFF800080007F7F7FFF7F7F7FFFFFFFFFFF80008000800080008000
+      800080008000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFF80008000800080007F7F7FFF800080007F7F7FFF7F7F7FFF7F7F7FFF7F7F
+      7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F
+      7FFF7F7F7FFF7F7F7FFF80008000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF000000FFBFBFBFFFBFBFBFFFFF0000FFFF00
+      00FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF00
+      00FFBFBFBFFFBFBFBFFF000000FF000000FFFF0000FFFF0000FFFF0000FFFF00
+      00FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF00
+      00FFFF0000FFFF0000FF000000FF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FF000000FFFFFFFFFF000000FF000000FFFFFF
+      FFFF000000FF000000FFFFFFFFFF000000FF000000FFFFFFFFFF000000FF0000
+      00FF000000FFFFFFFFFF000000FF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FF000000FFFFFFFFFF000000FF000000FFFFFF
+      FFFF000000FF000000FFFFFFFFFF000000FF000000FFFFFFFFFF000000FF0000
+      00FF000000FFFFFFFFFF000000FF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FF000000FFFFFFFFFF000000FF000000FFFFFF
+      FFFF000000FF000000FFFFFFFFFF000000FF000000FFFFFFFFFF000000FF0000
+      00FF000000FFFFFFFFFF000000FF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FF000000FFFFFFFFFF000000FF000000FFFFFF
+      FFFF000000FF000000FFFFFFFFFF000000FF000000FFFFFFFFFF000000FF0000
+      00FF000000FFFFFFFFFF000000FF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      80000080800000808000008080007F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F
+      7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F
+      7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFFFFFFFFFFFFFFFFFF7F7F7FFF7F7F
+      7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F
+      7FFFFFFFFFFFFFFFFFFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F
+      7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F
+      7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF7F7F7FFF7F7F7FFFFFFFFFFF7F7F7FFF7F7F7FFF0080
+      80007F7F7FFF7F7F7FFF008080007F7F7FFF7F7F7FFF008080007F7F7FFF7F7F
+      7FFF7F7F7FFF008080007F7F7FFF7F7F7FFFFFFFFFFF00808000FFFFFFFFFFFF
+      FFFF00808000FFFFFFFFFFFFFFFF00808000FFFFFFFFFFFFFFFF00808000FFFF
+      FFFFFFFFFFFFFFFFFFFF7F7F7FFF7F7F7FFFFFFFFFFF7F7F7FFF7F7F7FFF0080
+      80007F7F7FFF7F7F7FFF008080007F7F7FFF7F7F7FFF008080007F7F7FFF7F7F
+      7FFF7F7F7FFF008080007F7F7FFF7F7F7FFFFFFFFFFF00808000FFFFFFFFFFFF
+      FFFF00808000FFFFFFFFFFFFFFFF00808000FFFFFFFFFFFFFFFF00808000FFFF
+      FFFFFFFFFFFFFFFFFFFF7F7F7FFF7F7F7FFFFFFFFFFF7F7F7FFF7F7F7FFF0080
+      80007F7F7FFF7F7F7FFF008080007F7F7FFF7F7F7FFF008080007F7F7FFF7F7F
+      7FFF7F7F7FFF008080007F7F7FFF7F7F7FFFFFFFFFFF00808000FFFFFFFFFFFF
+      FFFF00808000FFFFFFFFFFFFFFFF00808000FFFFFFFFFFFFFFFF00808000FFFF
+      FFFFFFFFFFFFFFFFFFFF7F7F7FFF7F7F7FFFFFFFFFFF7F7F7FFF7F7F7FFF0080
+      80007F7F7FFF7F7F7FFF008080007F7F7FFF7F7F7FFF008080007F7F7FFF7F7F
+      7FFF7F7F7FFF008080007F7F7FFF7F7F7FFFFFFFFFFF00808000FFFFFFFFFFFF
+      FFFF00808000FFFFFFFFFFFFFFFF00808000FFFFFFFFFFFFFFFF00808000FFFF
+      FFFFFFFFFFFFFFFFFFFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F
+      7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F
+      7FFF7F7F7FFF7F7F7FFF7F7F7FFF00808000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+    }
+  end
+  object dsOrganization: TOraDataSource
+    DataSet = DM_Main.dataOrganization
+    OnDataChange = dsOrganizationDataChange
+    left = 608
+  end
+end
